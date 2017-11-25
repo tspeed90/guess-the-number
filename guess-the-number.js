@@ -8,7 +8,7 @@ function checkPlayerGuess() {
     playerGuess = guessField.value;
     playerGuess = parseInt(playerGuess, 10);
     if (playerGuess === gameNumber) {
-      messages.innerText = "Congratulations!\nYou guessed it!";
+      messages.innerText = "Congratulations! You guessed it!";
     }
 
     if (playerGuess !== gameNumber) {
