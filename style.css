@@ -20,7 +20,7 @@ body {
   text-align: center;
 }
 .messages {
-  font-size: 1.3em;
+  font-size: 1.5em;
   color: #222;
   margin-bottom: 20px;
 }
@@ -30,15 +30,23 @@ body {
 }
 .guess-field {
   border: solid 2px #F8F8F8;
-  padding: 15px;
-  text-align: center;
-}
-button {
   padding: 17px;
-  color: #222;
-  background-color: #F8F8F8;
-  border: none;
+  text-align: center;
+  box-sizing: border-box;
+  border: solid 2px #55706B;
 }
-label {
-  font-size: 1.3em;
+.submit-btn {
+  padding: 17px;
+  box-sizing: border-box;
+  background-color: #F8F8F8;
+  border: solid 2px #55706B;
+}
+.hint-btn {
+  margin: 15px auto;
+  padding: 8px;
+  border: solid 2px #55706B;
+}
+.hint-message {
+  text-align: center;
+  font-size: 1.2em;
 }
