@@ -18,6 +18,8 @@ body {
 }
 .number-display {
   text-align: center;
+  height: 80px;
+  vertical-align: bottom;
 }
 .messages {
   font-size: 1.5em;
@@ -27,6 +29,7 @@ body {
 
 .input {
   text-align: center;
+  height: 80px;
 }
 .guess-field {
   border: solid 2px #F8F8F8;
@@ -47,6 +50,8 @@ body {
   border: solid 2px #55706B;
 }
 .hint-message {
+  margin-top: 25px;
   text-align: center;
   font-size: 1.2em;
+  height: 80px;
 }
