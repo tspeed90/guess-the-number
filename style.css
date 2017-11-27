@@ -37,16 +37,18 @@ body {
   text-align: center;
   box-sizing: border-box;
   border: solid 2px #55706B;
+  max-width: 160px;
 }
 .submit-btn {
   padding: 17px;
   box-sizing: border-box;
-  background-color: #F8F8F8;
+  background-color: #FFF;
   border: solid 2px #55706B;
 }
 .hint-btn {
   margin: 15px auto;
   padding: 8px;
+  background-color: #FFF;
   border: solid 2px #55706B;
 }
 .hint-message {

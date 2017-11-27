@@ -5,7 +5,11 @@ let messages = document.querySelector(".messages");
 let guessButton = document.querySelector(".submit-btn");
 let hintButton = document.querySelector(".hint-btn");
 let hintMessage = document.querySelector(".hint-message");
-let hintList = [checkEvenOrOdd, compareLastGuess];
+let hintList = [checkEvenOrOdd, compareLastGuess, checkDivisibleBy, checkHigherThan50, giveOneDigit];
+if (gameNumber < 10) {
+  let giveDigitIndex = hintList.indexOf(giveOneDigit);
+  hintList.splice(giveDigitIndex);
+}
 
 function checkPlayerGuess() {
     hintMessage.innerText = "";
@@ -36,16 +40,43 @@ function checkEvenOrOdd() {
 }
 function compareLastGuess() {
   hintMessage.innerText = playerGuess > gameNumber ? "The number is lower than your guess of " + playerGuess +"." : "The number is higher than your guess of " + playerGuess + ".";
-
+}
+function checkDivisibleBy() {
+  if (gameNumber % 5 === 0) {
+    hintMessage.innerText = "The number is divisible by 5.";
+  } else if (gameNumber % 6 === 0) {
+    hintMessage.innerText = "The number is divisible by 6.";
+  } else if (gameNumber % 7 === 0) {
+    hintMessage.innerText = "The number is divisible by 7.";
+  } else if (gameNumber % 8 === 0) {
+    hintMessage.innerText = "The number is divisible by 8.";
+  } else if (gameNumber % 9 === 0) {
+    hintMessage.innerText = "The number is divisible by 9.";
+  }
+}
+function checkHigherThan50() {
+  hintMessage.innerText = gameNumber >= 50 ? "The number is greater than or equal to 50." : "The number is less than 50."
+}
+function giveOneDigit() {
+  let gameNumberString = gameNumber.toString();
+  let gameNumberDigit = gameNumberString[Math.floor(Math.random() * 2)];
+  hintMessage.innerText = "One of the digits from the number is " + gameNumberDigit + ".";
 }
 
-let randomIndex = Math.floor(Math.random() * 2);
+let usedHints = [];
 
 hintButton.addEventListener('click', function() {
   if (playerGuess === -1) {
     hintMessage.innerText = "Sorry, I can't give you any hints until you've made a guess."
   } else {
-    randomIndex = randomIndex === 0 ? 1 : 0;
+    let randomIndex = Math.floor(Math.random() * hintList.length);
+    while (usedHints.includes(randomIndex)) {
+      randomIndex = Math.floor(Math.random() * hintList.length);
+    }
     hintList[randomIndex]();
+    usedHints.push(randomIndex);
+  }
+  if (usedHints.length >= hintList.length) {
+    usedHints = [];
   }
 });
