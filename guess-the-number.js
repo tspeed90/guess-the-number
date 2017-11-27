@@ -1,34 +1,50 @@
 const gameNumber = Math.floor(Math.random() * 100 + 1);
 let playerGuess = -1;
+let guessCount = 0;
 let guessField = document.querySelector(".guess-field");
 let messages = document.querySelector(".messages");
 let guessButton = document.querySelector(".submit-btn");
 let hintButton = document.querySelector(".hint-btn");
 let hintMessage = document.querySelector(".hint-message");
+let inputArea = document.querySelector(".input-area");
 let hintList = [checkEvenOrOdd, compareLastGuess, checkDivisibleBy, checkHigherThan50, giveOneDigit];
+
 if (gameNumber < 10) {
   let giveDigitIndex = hintList.indexOf(giveOneDigit);
   hintList.splice(giveDigitIndex);
 }
 
+function displayAfterWin() {
+  messages.innerText = guessCount === 1 ? "Congratulations!\n You guessed it in " + guessCount + " guess!": "Congratulations!\n You guessed it in " + guessCount + " guesses!";
+  messages.style.fontSize = "2em";
+  guessField.style.display = "none";
+  hintButton.style.display = "none";
+  guessButton.innerText = "Play Again";
+  guessButton.removeEventListener("click", checkPlayerGuess);
+  guessButton.addEventListener("click", function() {
+    window.location.reload();
+  });
+}
 function checkPlayerGuess() {
-    hintMessage.innerText = "";
-    playerGuess = guessField.value;
-    playerGuess = parseInt(playerGuess, 10);
-    if (playerGuess === gameNumber) {
-      messages.innerText = "Congratulations! You guessed it!";
-    }
-    if (playerGuess !== gameNumber) {
-      let difference = Math.abs(gameNumber - playerGuess);
-      if (difference <= 3) {
-        messages.innerText = "Great guess! Very close!";
-      } else if (difference <= 10) {
-        messages.innerText = "Good guess. You're not too far!";
-      } else {
-        messages.innerText = "Ooo! Try again!";
-      }
+  hintMessage.innerText = "";
+  guessCount++;
+  playerGuess = guessField.value;
+  playerGuess = parseInt(playerGuess, 10);
+  if (playerGuess === gameNumber) {
+    displayAfterWin();
+  }
+  if (playerGuess !== gameNumber) {
+    let difference = Math.abs(gameNumber - playerGuess);
+    if (difference <= 3) {
+      messages.innerText = "Great guess! Very close!";
+    } else if (difference <= 10) {
+      messages.innerText = "Good guess. You're not too far!";
+    } else {
+      messages.innerText = "Ooo! Try again!";
     }
   }
+}
+
 guessButton.addEventListener('click', checkPlayerGuess);
 guessField.addEventListener('keypress', function(e) {
   if (e.keyCode === 13) {
