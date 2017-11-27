@@ -16,7 +16,6 @@ if (gameNumber < 10) {
 
 function displayAfterWin() {
   messages.innerText = guessCount === 1 ? "Congratulations!\n You guessed it in " + guessCount + " guess!": "Congratulations!\n You guessed it in " + guessCount + " guesses!";
-  messages.style.fontSize = "2em";
   guessField.style.display = "none";
   hintButton.style.display = "none";
   guessButton.innerText = "Play Again";
