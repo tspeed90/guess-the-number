@@ -15,8 +15,8 @@ body {
 }
 .page {
   display: flex;
-  width: 500px;
-  height: 500px;
+  min-width: 500px;
+  min-height: 500px;
   box-sizing: border-box;
   border-radius: 50%;
   background-color: rgb(246, 243, 55);
@@ -83,4 +83,8 @@ button {
 .hint-message {
   max-width: 350px;
   margin-top: 1.5rem;
+}
+
+.hint-count {
+  margin-left: 10px;
 }
