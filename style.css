@@ -105,9 +105,11 @@ button {
     flex-direction: column;
     width: 300px;
     height: 300px;
+    flex-shrink: 0;
   }
   .hints {
     display: flex;
+    flex-shrink: 0;
     flex-direction: row;
   }
   .hint-message {
