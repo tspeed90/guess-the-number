@@ -57,35 +57,60 @@ button {
 
 /* HINTS */
 .hints {
-  border-radius: 50%;
-  margin: 5px;
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
 }
 
-.hint-count__container,
+/* .hint-count__container, */
 .hint-btn {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  margin-top: 5rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   background-color: rgb(246, 243, 55);
-  margin: 5px;
+  margin: 10px;
   border: none;
-  font-size: 1.8rem;
+  font-size: 1.3rem;
+  box-shadow: 5px 5px 5px rgb(182, 179, 42);
 }
 
 .hint-count__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: 1.2rem;
+  width: 200px;
+  height: 180px;
+  background-color: rgb(246, 243, 55);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.hint-count {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.hint-btn:hover {
+  background-color: rgb(236, 233, 45);
+}
+
+.hint-btn:active {
+  outline: 0;
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+.hint-btn:focus-visible {
+  outline: 1;
 }
 
 .hint-message {
   max-width: 350px;
   margin-top: 1.5rem;
-}
-
-.hint-count {
-  margin-left: 10px;
 }
 
 /* MEDIA QUERIES */
@@ -109,8 +134,10 @@ button {
   }
   .hints {
     display: flex;
+    height: fit-content;
     flex-shrink: 0;
     flex-direction: row;
+    margin-top: 2rem;
   }
   .hint-message {
     max-width: 200px;
