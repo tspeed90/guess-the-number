@@ -6,7 +6,6 @@ let messages = document.querySelector('.messages');
 let guessButton = document.querySelector('.submit-btn');
 let hintButton = document.querySelector('.hint-btn');
 let hintMessage = document.querySelector('.hint-message');
-let inputArea = document.querySelector('.input-area');
 let hintCount = document.querySelector('.hint-count');
 let hintList = [
   checkEvenOrOdd,
@@ -15,7 +14,9 @@ let hintList = [
   checkHigherThan50,
   giveOneDigit
 ];
-hintCount.textContent = 0 / 5;
+hintCount.textContent = '0 / 5';
+
+guessField.focus();
 
 if (gameNumber < 10) {
   let giveDigitIndex = hintList.indexOf(giveOneDigit);
@@ -56,11 +57,7 @@ function checkPlayerGuess() {
 }
 
 guessButton.addEventListener('click', checkPlayerGuess);
-guessField.addEventListener('keypress', function(e) {
-  if (e.keyCode === 13) {
-    checkPlayerGuess();
-  }
-});
+
 function checkEvenOrOdd() {
   hintMessage.innerText =
     gameNumber % 2 === 0 ? 'The number is even.' : 'The number is odd.';
@@ -115,4 +112,12 @@ hintButton.addEventListener('click', function() {
   if (usedHints.length >= hintList.length) {
     usedHints = [];
   }
+  hideHintButton();
 });
+
+//TODO: split into two functions? one to check for remaining hints and one to do DOM manipulation
+function hideHintButton() {
+  if (hintCount.textContent === '5/5') {
+    hintButton.style.display = 'none';
+  }
+}

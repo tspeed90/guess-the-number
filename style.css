@@ -39,20 +39,30 @@ button {
 
 .input-area {
   text-align: center;
+  cursor: text;
 }
 
 .guess-field {
-  padding: 1rem;
-  text-align: center;
-  box-sizing: border-box;
-  border: solid 1px #333;
+  border: none;
+  border-bottom: 2px solid #444;
+  background-color: inherit;
+  font-size: 1.3rem;
+  caret-color: #333;
   max-width: 160px;
+  margin: 0 1rem;
 }
+
+.guess-field:focus {
+  outline: 0;
+}
+
 .submit-btn {
   padding: 1rem;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: inherit;
   border: solid 1px #333;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgb(182, 179, 42);
 }
 
 /* HINTS */
